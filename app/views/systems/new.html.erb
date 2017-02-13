@@ -1,0 +1,77 @@
+<p id="page_title" style="visibility: hidden">New system</p>
+<%= form_for :system, url: systems_path do |f| %>
+
+
+
+    <% if @system.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@system.errors.count, "error") %> prohibited
+            this article from being saved:
+          </h2>
+          <ul>
+            <% @system.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    
+    <div class="mdl-grid">
+    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--5-col mdl-grid">
+        <div class="display mdl-grid">
+   <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      <%= f.text_field :name, class: 'mdl-textfield__input', id: 'sample3'  %>
+      <%= f.label :name, class: "mdl-textfield__label", for: 'sample3' %>
+    </p>
+
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      <%= f.text_field :c_id, class: 'mdl-textfield__input', id: 'sample1' %>
+      <%= f.label :c_id, class: 'mdl-textfield__label', for: 'sample1'  %>
+    </p>
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      
+      <%= f.text_field :release_year, class: 'mdl-textfield__input', id: 'sample2' %>
+      <%= f.label :release_year, class: 'mdl-textfield__label', for: 'sample2' %>
+    </p>
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      
+      <%= f.text_field :played, class: 'mdl-textfield__input', id: 'sample4' %>
+      <%= f.label :played, class: 'mdl-textfield__label', for: 'sample4'  %>
+    </p>
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      <%= f.text_field :url, class: 'mdl-textfield__input', id: 'sample5' %>
+      <%= f.label :url, class: 'mdl-textfield__label', for: 'sample5'  %>
+    </p>
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      <%= f.text_field :img_url, class: 'mdl-textfield__input', id: 'sample5' %>
+      <%= f.label :img_url, class: 'mdl-textfield__label', for: 'sample5'  %>
+    </p>
+<br>
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      <%= f.submit 'Save System', :class => 'mdl-button mdl-js-button mdl-button--raised' %>
+    </p>
+
+
+<% end %>
+  </div>
+  </div>
+  
+
+<div class="emo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid">
+<%= form_tag import_systems_path, class: '', multipart: true do %>
+    <%= file_field_tag :file, class: 'mdl-textfield mdl-color-text--blue-grey-900' %>
+    <%= submit_tag "Import", class: 'buttons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white' %>
+    <%= link_to 'Back', systems_path, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white align_right', style: 'margin: 3px' %>
+<% end %>
+</div>
+
+
+</div>
+
+
+
+
+
+
+<%= link_to 'Back', systems_path, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white' %>

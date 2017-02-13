@@ -1,0 +1,76 @@
+
+<!-- Filename: app/views/dashboard/index.html.erb -->
+
+<h3>My Chart</h3>
+<div id="chartContainer"><%= @chart.render() %></div>
+
+
+
+
+
+
+Set width of the chart.
+
+@chart.width = 600
+Set height of the chart.
+
+@chart.height = 400
+Set the chart type.
+
+@chart.type = "column2d"
+Set the datasource format of the chart.
+
+@chart.dataFormat = "json"
+Set the datasource format of the chart.
+
+@chart.dataSource = {
+    chart: {
+            caption: "Comparison of Quarterly Revenue",
+            subCaption: "Harry's SuperMart",
+            xAxisname: "Quarter",
+            yAxisName: "Amount ($)",
+            numberPrefix: "$",
+            theme: "fint",
+            exportEnabled: "1",
+            },
+            categories: [{
+                  category: [
+                      { label: "Q1" },
+                      { label: "Q2" },
+                      { label: "Q3" },
+                      { label: "Q4" }
+                  ]
+                }],
+            dataset: [
+                {
+                    seriesname: "Previous Year",
+                    data: [
+                        { value: "10000" },
+                        { value: "11500" },
+                        { value: "12500" },
+                        { value: "15000" }
+                    ]
+                },
+                {
+                    seriesname: "Current Year",
+                    data: [
+                        { value: "25400" },
+                        { value: "29800" },
+                        { value: "21800" },
+                        { value: "26800" }
+                    ]
+                }
+          ]
+}
+Set the url from where the datasource should be fetched. This must be a valid json data.
+
+@chart.jsonUrl = "/data/chart.json"
+Set the url from where the datasource should be fetched. This must be a valid xml data.
+
+@chart.xmlUrl = "/data/chart.xml"
+Set the DOM id where the chart should be rendered.
+
+@chart.renderAt = "chartContainer"
+Render the chart.
+
+@chart.render()

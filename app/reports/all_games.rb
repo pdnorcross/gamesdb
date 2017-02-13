@@ -1,5 +1,4 @@
 class AllGames < ActiveRecord::Base
-
   def sql
     "Select
         name as 'Name',
@@ -11,5 +10,4 @@ class AllGames < ActiveRecord::Base
         games
 "
   end
-
 end

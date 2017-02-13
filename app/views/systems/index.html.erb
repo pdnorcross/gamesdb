@@ -1,0 +1,22 @@
+<div class="mdl-grid">
+  <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+    <% if @systems.present? %>
+        <table id='datatable' class="display mdl-color-text--blue-grey-900 mdl-cell--8-col">
+          <tr>
+            <th> Name </th>
+            <th> Release Year</th>
+            <th> ID </th>
+            <th>Type</th>
+            <th>Actions</th>
+          </tr>
+              <%= render @systems %>
+        </table>
+        <%= will_paginate @systems, class: 'apple_pagination' %>
+    <% else %>
+      <p> There are no systems uploaded yet. </p>
+    <% end %>
+  </div>
+</div>
+<p id="page_title" style="visibility: hidden">All Systems</p>
+
+<%= link_to "Download", systems_path(format: "csv"), class: 'new_button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white' %>

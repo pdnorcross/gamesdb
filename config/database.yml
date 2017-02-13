@@ -1,22 +1,19 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
-  port: 5432
   pool: 5
 
 development:
   <<: *default
   database: gamesdb_development
-  username: ~
-  password: ~
+  username: ubuntu
+  password: peter
 
 test:
   <<: *default
   database: gamesdb_test
-  username: ~
-  password: ~
-
+  username: ubuntu
+  password: peter
 production:
   <<: *default
   database: gamesdb

@@ -1,28 +1,32 @@
 Rails.application.routes.draw do
-  root 'games#index'
+  root 'home#index'
+  
+  resources :reporting do
+  end
+
+  resources :home do
+  end
+
+  resources :settings do
+    collection do
+      post :clear_sys
+      post :clear_game
+      post :urls
+      post :owned_or_not_sett
+    end
+  end
+  
+  resources :systems do
+    collection do
+     post :import
+    end
+  end
 
   resources :games do
     collection do
       post :import
-      get :xbox_one
-      get :wiiu
-      get :wii
-      get :xbox_360
-      get :xbox
-      get :gcn
-      get :ps2
-      get :n64
-      get :ps1
-      get :saturn
-      get :snes
-      get :genesis
-      get :nes
-      get :pc
       get :searching
+      get :console
     end
-
   end
-
-
-
 end

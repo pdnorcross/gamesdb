@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'jquery-datatables-rails'
 gem 'jquery-ui-rails'
 gem 'will_paginate'
+gem 'autoprefixer-rails', '~> 6.6', '>= 6.6.1'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
@@ -28,6 +29,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-datatables'
   gem 'rails-assets-material-icons'
 end
+
+gem 'material_design_lite-rails', '~> 1.3'
+gem 'fusioncharts-rails'
 
 group :development do
   gem 'byebug'

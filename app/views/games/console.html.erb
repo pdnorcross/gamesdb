@@ -1,0 +1,24 @@
+<p id="page_title" style="visibility: hidden"><%= @name %></p>
+
+<div>
+  <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+
+    <table id='datatable' class="display mdl-color-text--blue-grey-900">
+      <tr>
+        <th>Name </th>
+        <th> Console </th>
+        <th> Developer </th>
+        <th> Publisher </th>
+        <th> Release Year</th>
+        <th><%= link_to 'Back', games_path, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white'%></th>
+      </tr>
+
+    <% @games.each do |game| %>
+        <%= render game %>
+    <% end %>
+    </table>
+
+  </div>
+
+</div>
+

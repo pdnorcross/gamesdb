@@ -1,12 +1,11 @@
-
-        <tr>
+<tr>
           <td><%= game.name %></td>
-          <td><%= game.console_id %></td>
+          <td><%= game.c_name %></td>
           <td><%= game.developer %></td>
           <td><%= game.publisher %></td>
           <td><%= game.release_year %></td>
+          <td><%= link_to 'Edit', edit_game_path(game), class: 'new_button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white'%>
+              <%= link_to 'Destroy', game_path(game), method: :delete, data: { confirm: 'Are you sure?' }, class: 'new_button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white' %>
+          </td>
         </tr>
-
-
-
-</div>
+        

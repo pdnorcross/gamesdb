@@ -1,0 +1,11 @@
+      <table id='datatable' class="display mdl-color-text--blue-grey-900">
+      <tr>
+        <th>Name </th>
+        <th> Release Year </th>
+        <th> ID </th>
+      </tr>
+      
+      <% @systems.each do |system| %>
+          <%= render system %>
+      <% end %>
+    </table>

@@ -1,0 +1,91 @@
+<p id="page_title" style="visibility: hidden">Reporting</p>
+
+<div>
+  
+  <div class="mdl-grid">
+                
+                <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp portfolio-card">
+                    <!--<div class="mdl-card__media">-->
+                    <!--    <img class="article-image" src="" border="0" alt="">-->
+                    <!--</div>-->
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Games Purchased</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                       <h4><%= @total %></h4>
+                    </div>
+                </div>
+                
+                                
+                <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp portfolio-card">
+                    <!--<div class="mdl-card__media">-->
+                    <!--    <img class="article-image" src="" border="0" alt="">-->
+                    <!--</div>-->
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Daily</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <h4><%= @daily %></h4>
+                    </div>
+                </div>
+                                
+                <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp portfolio-card">
+                    <!--<div class="mdl-card__media">-->
+                    <!--    <img class="article-image" src="" border="0" alt="">-->
+                    <!--</div>-->
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Weekly</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                      <h4><%= @weekly %></h4>
+                    </div>
+                </div>
+                
+                                
+                <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp portfolio-card">
+                    <!--<div class="mdl-card__media">-->
+                    <!--    <img class="article-image" src="" border="0" alt="">-->
+                    <!--</div>-->
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">30 Days</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                       <h4><%= @month %></h4>
+                    </div>
+                </div>
+                
+                                
+                <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp portfolio-card">
+                    <!--<div class="mdl-card__media">-->
+                    <!--    <img class="article-image" src="" border="0" alt="">-->
+                    <!--</div>-->
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">6 Months</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                       <h4><%= @six_months %></h4>
+                    </div>
+                </div>
+                
+                                
+                <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp portfolio-card">
+                    <!--<div class="mdl-card__media">-->
+                    <!--    <img class="article-image" src="" border="0" alt="">-->
+                    <!--</div>-->
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Yearly</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <h4><%= @year_count %></h4>
+                    </div>
+                </div>
+
+</div>
+
+<div class="demo-charts mdl-grid fusion" id="chartContainer"><%= @chart.render() %></div>
+
+
+  <%= link_to 'Back', games_path, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white'%>
+</div>
+
+

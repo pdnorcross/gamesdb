@@ -3,6 +3,13 @@
 html, body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
 }
+
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 .demo-avatar {
     width: 48px;
     height: 48px;
@@ -223,4 +230,10 @@ _:-ms-input-placeholder, :root .demo-graph {
 
 .special_grey{
     color: rgba(171, 171, 171, .57)
+}
+
+.align_right{
+    display: flex;
+    justify-content: flex-end;
+    
 }

@@ -7,5 +7,6 @@
  *= require styles
  *= require global
  *= require_self
+ *= require material
 */
 

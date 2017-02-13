@@ -1,0 +1,14 @@
+      <table id='datatable' class="display mdl-color-text--blue-grey-900">
+      <tr>
+        <th>Name </th>
+        <th> Console </th>
+        <th> Developer </th>
+        <th> Publisher </th>
+        <th> Release Year</th>
+        <th>Modify</th>
+      </tr>
+      
+      <% @games.each do |game| %>
+          <%= render game %>
+      <% end %>
+    </table>

@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mobile Web Final</title>
+  <title>Games DB</title>
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -25,7 +25,7 @@
   <link rel="shortcut icon" href="../assets/favicon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.cyan-light_blue.min.css">
+  <!--<link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.cyan-light_blue.min.css">-->
   <link rel="stylesheet" href="../assets/styles.css">
   <link rel="stylesheet" href="../assets/global.css">
   <link rel="stylesheet" href="../assets/application.css">
@@ -35,28 +35,29 @@
 </head>
     <body>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-      <header class="demo-header mdl-layout__header mdl-color--blue-grey-900 mdl-color-text--grey-600">
+      <header class="demo-header mdl-layout__header mdl-color--light-blue-800 mdl-color-text--red-700">
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title mdl-color-text--blue-grey-50" id="where_page_title_goes"></span>
           <div class="mdl-layout-spacer"></div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-              <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="search" method="get" action="<%= games_path %>">
-              <label class="mdl-textfield__label" for="search">Enter your query...</label>
-            </div>
+         <%if current_page?('/games' || ' ')%>
+         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-color-text--blue-grey-50", style="margin-top: 0%">
+            <%= form_tag(games_path, :method => "get", id: "search-form", class: 'mdl-textfield mdl-js-textfield', style: 'margin-top: 0%') do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search Games", class: 'mdl-textfield__input mdl-color-text--blue-grey-50' %>
+              <%= submit_tag "Search", class: 'new_button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white', style: 'visibility: hidden' %>
+            <% end %>
           </div>
+          <% end %>
           <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
             <i class="material-icons">more_vert</i>
           </button>
           <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
             <li class="mdl-menu__item" href="https://github.com/">About</li>
+            <li><a class="mdl-menu__item" href="/games/new">New Game</a></li>
+            <li><a class="mdl-menu__item" href="/systems/new">New System</a></li>
           </ul>
         </div>
       </header>
-      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+      <div class="demo-drawer mdl-layout__drawer mdl-color--light-blue-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
           <img src="../assets/user.jpg" class="demo-avatar">
           <div class="demo-avatar-dropdown">
@@ -65,24 +66,12 @@
 
           </div>
         </header>
-        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games">All Games</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/new">New</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/edit">Edit</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/xbox_one">Xbox 1</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/wiiu">WiiU</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/wii">Wii</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/xbox_360">Xbox 360</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/xbox">Xbox</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/gcn">GameCube</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/ps2">Playstation 2</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/n64">Nintendo 64</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/ps1">Play Station 1</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/saturn">Sega Saturn</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/snes">Super Nintendo</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/genesis">Sega Genesis</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/nes">Nintendo Entertainment System</a>
-          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games/pc">PC</a>
+        <nav class="demo-navigation mdl-navigation 	mdl-color--light-blue-800">
+          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/home">Home</a>
+          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/games">Games</a>
+          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/systems">Systems</a>
+          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/reporting">Reports</a>
+          <a class="mdl-navigation__link mdl-color-text--blue-grey-50" href="/settings">Control Console</a>
           <div class="mdl-layout-spacer"></div>
         </nav>
       </div>

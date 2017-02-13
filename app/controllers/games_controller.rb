@@ -1,19 +1,29 @@
 class GamesController < ApplicationController
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  skip_before_action :verify_authenticity_token
   require 'csv'
+  include GamesHelper
 
   def index
     if params[:search]
-      @games = Game.search(params[:search])
+      @games = Game.search(params[:search]).paginate(page: params[:page], per_page: 15)
     else
-    @games = Game.all
+      @games = Game.all.paginate(page: params[:page], per_page: 15)
+    end
+    @whole_list = Game.all
+    
+    respond_to do |format|
+        format.html
+        format.csv { send_data  @whole_list.to_csv }
     end
   end
 
   def new
     @game = Game.new
+  end
+
+  def edit
+    @game = Game.find(params[:id])
   end
 
   def show
@@ -27,80 +37,49 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game.save
-      redirect_to action: "index"
+      check_sys(@game)
+      owned_or_not_b(@game)
+      redirect_to action: 'index'
     else
       render 'new'
     end
   end
 
-  def xbox_one
-    @games = Game.where(console_id: 1)
-  end
-
-  def wiiu
-    @games = Game.where(console_id: 2)
-  end
-
-  def wii
-    @games = Game.where(console_id: 3)
-  end
-
-  def xbox_360
-    @games = Game.where(console_id: 4)
-  end
-
-  def xbox
-    @games = Game.where(console_id: 5)
-  end
-  def gcn
-    @games = Game.where(console_id: 6)
-  end
-
-  def ps2
-    @games = Game.where(console_id: 7)
-  end
-
-  def n64
-    @games = Game.where(console_id: 8)
-  end
-
-  def ps1
-    @games = Game.where(console_id: 9)
-  end
-
-  def saturn
-    @games = Game.where(console_id: 10)
-  end
-
-  def snes
-    @games = Game.where(console_id: 11)
-  end
-
-  def genesis
-    @games = Game.where(console_id: 12)
-  end
-
-  def nes
-    @games = Game.where(console_id: 13)
-  end
-
-  def pc
-    @games = Game.where(console_id: 14)
-  end
+  def update
+    @game = Game.find(params[:id])
+    if @game.update(game_params)
+      check_sys(@game)
+      owned_or_not_b(@game)
+      redirect_to @game
+    else
+      render 'edit'
+    end
+end
 
 
-  def search
-    @games = Game.search(params[:search])
+def destroy
+  @game = Game.find(params[:id])
+  @game.destroy
+  redirect_to games_path
+end
+
+  def console
+    name = params[:con]
+    system = System.find_by(name: name)
+    c_id = system.c_id
+    @name = system.name
+    @games = Game.where(console_id: c_id)
   end
+
 
   def import
     Game.import(params[:file])
-    redirect_to root_url, notice: "Games imported."
+    redirect_to root_url, notice: 'Games imported.'
   end
 
   private
+
   def game_params
     params.require(:game).permit!
   end
-
 end

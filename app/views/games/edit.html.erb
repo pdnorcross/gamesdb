@@ -1,8 +1,8 @@
-<h1>Editing article</h1>
+<p id="page_title" style="visibility: hidden">Edit Game</p>
 
 <%= form_for :game, url: game_path(@game), method: :patch do |f| %>
 
-    <% if @game.errors.any? %>
+   <% if @game.errors.any? %>
         <div id="error_explanation">
           <h2>
             <%= pluralize(@game.errors.count, "error") %> prohibited
@@ -16,32 +16,44 @@
         </div>
     <% end %>
 
-    <p>
-      <%= f.label :name %><br>
-      <%= f.text_field :name %>
+    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--5-col mdl-grid">
+        <div class="display mdl-grid">
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      <%= f.text_field :name, class: 'mdl-textfield__input', id: 'sample3'  %>
+      <%= f.label :name, class: "mdl-textfield__label", for: 'sample3' %>
     </p>
 
-    <p>
-      <%= f.label :console_id %><br>
-      <%= f.text_field :console_id %>
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      
+      <%= f.text_field :console_id, class: 'mdl-textfield__input', id: 'sample1' %>
+      <%= f.label :console_id, class: 'mdl-textfield__label', for: 'sample1'  %>
     </p>
-    <p>
-      <%= f.label :developer%><br>
-      <%= f.text_field :developer %>
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      
+      <%= f.text_field :developer, class: 'mdl-textfield__input', id: 'sample2' %>
+      <%= f.label :developer, class: 'mdl-textfield__label', for: 'sample2' %>
     </p>
-    <p>
-      <%= f.label :publisher %><br>
-      <%= f.text_field :publisher %>
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      
+      <%= f.text_field :publisher, class: 'mdl-textfield__input', id: 'sample4' %>
+      <%= f.label :publisher, class: 'mdl-textfield__label', for: 'sample4'  %>
     </p>
-    <p>
-      <%= f.label :release_year %><br>
-      <%= f.text_field :release_year %>
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      <%= f.text_field :release_year, class: 'mdl-textfield__input', id: 'sample5' %>
+      <%= f.label :release_year, class: 'mdl-textfield__label', for: 'sample5'  %>
+    </p>        
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      <%= f.text_field :c_name, class: 'mdl-textfield__input', id: 'sample6' %>
+      <%= f.label :c_name, class: 'mdl-textfield__label', for: 'sample6'  %>
     </p>
-
-    <p>
-      <%= f.submit %>
+<br>
+    <p class="mdl-cell--6-col mdl-textfield mdl-js-textfield">
+      <%= f.submit 'Save Game', :class => 'mdl-button mdl-js-button mdl-button--raised' %>
     </p>
 <% end %>
+  </div>
+
+</div>
 
 
-<%= link_to 'Back', games_path %>
+<%= link_to 'Back', games_path, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white' %>

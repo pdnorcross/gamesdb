@@ -1,8 +1,9 @@
 class Game < ActiveRecord::Base
   require 'csv'
+  has_many :systems
 
   def self.search(search)
-    where("name LIKE ?", "%#{search}%")
+    where('name LIKE ?', "%#{search}%")
   end
 
   def self.to_csv(options = {})
@@ -20,6 +21,5 @@ class Game < ActiveRecord::Base
       game.attributes = row.to_hash
       game.save!
     end
-
   end
 end

@@ -1,25 +1,8 @@
-<div>
-<p id="page_title" style="color:#f4f4f4">Home</p>
-
-<div class="mdl-cell--8-col">
-
-  <%= form_tag(games_path, :method => "get", id: "search-form", class: '') do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
-      <%= submit_tag "Search", class: 'new_button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white' %>
-  <% end %>
-
-<%= form_tag import_games_path, class: '', multipart: true do %>
-    <%= file_field_tag :file, class: 'mdl-textfield mdl-color-text--blue-grey-900' %>
-    <%= submit_tag "Import", class: 'buttons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white' %>
-<% end %>
-</div>
-<%= button_to 'New Game', new_game_path, class: 'new_button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white'%>
-
-  <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-grid">
-
-  <% if @games.present? %>
+<div class="mdl-grid">
 
 
+  <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+    <% if @games.present? %>
         <table id='datatable' class="display mdl-color-text--blue-grey-900 mdl-cell--8-col">
           <tr>
             <th>Name </th>
@@ -27,16 +10,16 @@
             <th> Developer </th>
             <th> Publisher </th>
             <th> Release Year</th>
+            <th>Actions</th>
           </tr>
-
               <%= render @games %>
         </table>
-  <% else %>
-
-    <p>There are no games matching the search parameter <%= params[:search] %>. </p>
-
-  <% end %>
-
-
-</div>
+        <%= will_paginate @games, class: 'apple_pagination' %>
+    <% else %>
+      <p>There are no games matching the search parameter <%= params[:search] %>. </p>
+    <% end %>
   </div>
+</div>
+<p id="page_title" style="visibility: hidden">All Games</p>
+
+<%= link_to "Download", games_path(format: "csv"), class: 'new_button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white' %>
